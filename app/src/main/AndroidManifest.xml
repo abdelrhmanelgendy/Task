@@ -6,6 +6,7 @@
     <uses-feature android:name="android.hardware.nfc" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,7 @@
         android:name="com.tasks.worker_manager.MyApp"
         tools:targetApi="31">
         <activity
-            android:name="com.tasks.gym_dashboard.presentation.MainActivity"
+            android:name="com.tasks.worker_manager.WorkerActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:label="@string/app_name"
