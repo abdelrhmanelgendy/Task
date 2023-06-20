@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Pro Version</string>
+    <string name="api_key">AIzaSyD4uStbluZBnwKADWRtCPalZoddDXdNQbs</string>
      <string name="email_already_in_use">Email already in use</string>
       <string name="network_error">Network error</string>
 </resources>

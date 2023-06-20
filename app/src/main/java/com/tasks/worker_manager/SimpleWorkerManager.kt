@@ -9,37 +9,35 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.MutableLiveData
 import androidx.work.*
 import com.tasks.navigationcomponent.R
+import kotlin.random.Random
 
 
 class SimpleWorkerManager(
     val context: Context,
-
     private val notificationManager: NotificationManager,
-
     workerParams: WorkerParameters,
 ) : Worker(context, workerParams) {
     private val TAG = "SimpleWorkerManagerTAG"
     override fun doWork(): Result {
 
         val my_age = inputData.getInt("my_age", -1)
-
+//
         Log.d(TAG, "Job Started ${this.hashCode()} ")
 
-        for (i in 0..1) {
-            setForegroundAsync(createForegroundInfo(i))
-            Thread.sleep(1000)
 
-        }
-        Log.d(
-            TAG,
-            "Job Finished ${Thread.currentThread().name} ${this.hashCode()} data ${my_age} ${runAttemptCount}"
-        )
-        return Result.success()
+            setForegroundAsync(createForegroundInfo("${Random(500).nextInt()} mostafa"))
+
+
+        val data = Data.Builder()
+            .putString("key", "this is value").build()
+
+        return Result.success(data)
     }
 
-    fun createForegroundInfo(progress: Int): ForegroundInfo {
+    fun createForegroundInfo(progress: String): ForegroundInfo {
         val intent = Intent(applicationContext, WorkerActivity::class.java)
         intent.putExtra("progress",progress)
         val pendingIntent: PendingIntent = PendingIntent.getActivity(
@@ -61,7 +59,7 @@ class SimpleWorkerManager(
         } else {
             TODO("VERSION.SDK_INT < O")
         }
-        return ForegroundInfo(123, notification)
+        return ForegroundInfo(Random.nextInt(), notification)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
