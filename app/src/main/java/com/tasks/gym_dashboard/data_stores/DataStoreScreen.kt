@@ -1,4 +1,4 @@
-package com.tasks.data_stores
+package com.tasks.gym_dashboard.data_stores
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

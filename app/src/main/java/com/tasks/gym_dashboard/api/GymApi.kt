@@ -1,6 +1,6 @@
-package com.tasks.api
+package com.tasks.gym_dashboard.api
 
-import com.tasks.data.model.GymItem
+import com.tasks.gym_dashboard.data.model.GymItem
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -16,7 +16,7 @@ interface GymApi {
         @Query("orderBy") orderingBy:String,
         @Query("equalTo") id:Int,
 
-    ):Map<Int,GymItem>
+    ):Map<Int, GymItem>
 
 
 }

@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.work.*
 import com.tasks.navigationcomponent.R
+import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 
@@ -27,14 +28,15 @@ class SimpleWorkerManager(
 //
         Log.d(TAG, "Job Started ${this.hashCode()} ")
 
+        Thread.sleep(5000)
+//
+//            setForegroundAsync(createForegroundInfo("${Random(500).nextInt()} mostafa"))
+//
+//
+//        val data = Data.Builder()
+//            .putString("key", "this is value").build()
 
-            setForegroundAsync(createForegroundInfo("${Random(500).nextInt()} mostafa"))
-
-
-        val data = Data.Builder()
-            .putString("key", "this is value").build()
-
-        return Result.success(data)
+        return Result.success()
     }
 
     fun createForegroundInfo(progress: String): ForegroundInfo {

@@ -1,57 +1,86 @@
 package com.tasks.gym_dashboard.presentation
 
 import android.util.Log
-
 import androidx.compose.runtime.*
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tasks.api.GymApi
-import com.tasks.api.consumer.GymApiConsumer
-import com.tasks.data.model.GymItem
-import kotlinx.coroutines.*
+import com.tasks.gym_dashboard.data.model.GymItem
+import com.tasks.gym_dashboard.data.model.GymStateItem
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-class GymsViewModel (private val stateHandle: SavedStateHandle):ViewModel() {
+class GymsViewModel(private val stateHandle: SavedStateHandle) : ViewModel() {
 
-    private   val TAG = "GymsViewModel"
-    var gymsState by mutableStateOf(emptyList<GymItem>())
-    var gymState by mutableStateOf(GymItem())
-
-    val coroutineExceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
-        Log.d(TAG, "handleException: "+exception.message)
-    }
+    private val TAG = "GymsViewModel"
+   private var _gymsState by
+    mutableStateOf(GymScreenState(gyms = emptyList<GymItem>(),progress = true, errorMsg = ""))
 
 
-     val gymApi: GymApi
-    init {
-        gymApi=GymApiConsumer().getApi()
-    }
+    var gymsState:State<GymScreenState> = derivedStateOf { _gymsState }
+     val repository = Repository()
 
 
-    suspend fun getListOfGyms(){
+    var gymState by mutableStateOf(
+        GymItem(
+            gym_name = "-1",
+            gym_location = "-1",
+            id = -1,
+            is_open = false,
+            is_Favorite = false
+        )
+    )
+
+    val coroutineExceptionHandler: CoroutineExceptionHandler =
+        CoroutineExceptionHandler { _, exception ->
+            Log.d(TAG, "handleException: " + exception.message)
+            _gymsState = _gymsState.copy(errorMsg =exception.message?:"", progress = false)
+
+        }
+
+
+
+
+
+    suspend fun getListOfGyms() {
         viewModelScope.launch(coroutineExceptionHandler) {
-            val list = getList()
+            val list = repository.getList()
 
-            Log.d(TAG, "getListOfGyms: "+list.toString())
-            gymsState=list
+            Log.d(TAG, "getListOfGyms: " + list.toString())
+            _gymsState = _gymsState.copy(gyms = list,progress = false)
         }
     }
 
 
-    suspend fun getSingleGym(){
+    suspend fun getSingleGym() {
         viewModelScope.launch(coroutineExceptionHandler) {
-            val gymItem = getGym(stateHandle.get<Int>("gym_id")?:0)
+            val gymItem =repository.getGym(stateHandle.get<Int>("gym_id") ?: 0)
 
-            Log.d(TAG, "gymItem: "+gymItem.toString())
-            gymState=gymItem.values.first()
+            Log.d(TAG, "gymItem: " + gymItem.toString())
+            gymState = gymItem.values.first()
         }
     }
-    suspend  private  fun  getGym(id: Int) = withContext(Dispatchers.IO){
-        gymApi.itemGym("\"id\"",id)
-    }
-    suspend  private  fun  getList()= withContext(Dispatchers.IO){
-        gymApi.listOfGyms()
+
+
+
+
+
+
+    fun toggleIsFavorite(item: GymItem) {
+
+        val gyms = _gymsState.gyms.toMutableList()
+        val indexOfFirst = gyms.indexOfFirst {
+            val b = it.id == item.id
+            b
+        }
+        gyms[indexOfFirst] = gyms[indexOfFirst].copy(is_Favorite = !gyms[indexOfFirst].is_Favorite)
+        val gymStateItem = GymStateItem(item.id, gyms[indexOfFirst].is_Favorite)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.gymDao.update(gymStateItem)
+        }
+        _gymsState =_gymsState.copy(gyms = gyms,progress = false)
     }
 
 }

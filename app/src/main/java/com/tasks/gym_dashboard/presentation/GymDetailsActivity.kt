@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
-import com.tasks.data.model.GymItem
+import com.tasks.gym_dashboard.data.model.GymItem
 
 private const val TAG = "MainActivityTAG"
 

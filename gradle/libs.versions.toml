@@ -1,0 +1,11 @@
+[versions]
+
+
+#implementation 'androidx.core:core-ktx:1.7.0'
+
+ktx="1.7.0"
+[libraries]
+
+
+ktx={group="androidx.core",name="core-ktx",version.ref="ktx"}
+[plugins]

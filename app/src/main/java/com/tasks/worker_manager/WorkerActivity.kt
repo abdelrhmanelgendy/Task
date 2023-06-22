@@ -1,11 +1,7 @@
 package com.tasks.worker_manager
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.database.Cursor
-import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -15,7 +11,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.work.*
 import java.util.concurrent.TimeUnit
@@ -27,7 +23,7 @@ class WorkerActivity : ComponentActivity() {
 
         intent?.let {
             val intExtra = it.getIntExtra("progress", -1)
-            Toast.makeText(this,"current prog $intExtra",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "current prog $intExtra", Toast.LENGTH_SHORT).show()
         }
         setContent {
             Scaffold() {
@@ -46,7 +42,8 @@ class WorkerActivity : ComponentActivity() {
     private fun stopSimpleWorker() {
         WorkManager.getInstance(this).cancelAllWork()
     }
-    private   val TAG = "WorkerActivityTAG"
+
+    private val TAG = "WorkerActivityTAG"
 
     @SuppressLint("Range")
     private fun startSimpleWorker() {
@@ -101,9 +98,10 @@ class WorkerActivity : ComponentActivity() {
 //        }
 //        cursor.close()
 
-        val constraints = Constraints.Builder()
+
+         val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
-             .setRequiresBatteryNotLow(true)
+            .setRequiresBatteryNotLow(true)
             .build()
 
 
@@ -113,49 +111,60 @@ class WorkerActivity : ComponentActivity() {
 
         val worker = WorkManager.getInstance(this)
         val request = PeriodicWorkRequest
-            .Builder(SimpleWorkerManager::class.java,15,TimeUnit.MINUTES)
+            .Builder(SimpleWorkerManager::class.java,
+                15,
+                TimeUnit.MINUTES,
+                15,
+                TimeUnit.MINUTES)
             .setConstraints(constraints)
-//            .setInputData(data)
+            .setInputData(data)
             .setBackoffCriteria(
                 BackoffPolicy.LINEAR, 1, TimeUnit.SECONDS
             ).build()
-        worker.enqueue(request)
+        worker.enqueueUniquePeriodicWork("name",ExistingPeriodicWorkPolicy.UPDATE,request)
 
-        val id = request.id
-        worker.getWorkInfoByIdLiveData(id).observe(this, Observer {
-            when(it.state)
-            {
-                WorkInfo.State.SUCCEEDED->  {
-                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.SUCCEEDED "+it.outputData.getString("key"))
-                }
-                WorkInfo.State.FAILED->  {
-                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.FAILED")
 
-                }
-                WorkInfo.State.RUNNING->  {
-                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.RUNNING")
-
-                }
-
-                WorkInfo.State.ENQUEUED->  {
-                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.RUNNING")
-
-                }
-
-                WorkInfo.State.BLOCKED->  {
-                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.RUNNING")
-
-                }
-
-                else -> {}
-            }
+        worker.getWorkInfosForUniqueWorkLiveData("name").observe(this, {
+            it.forEach(::print)
+//            Log.d(TAG, "startSimpleWorker: ")
         })
+//        val id = request.id
+//        worker.getWorkInfoByIdLiveData(id).observe(this, Observer {
+//            when (it.state) {
+//                WorkInfo.State.SUCCEEDED -> {
+//                    Log.d(
+//                        TAG,
+//                        "startSimpleWorker: WorkInfo.State.SUCCEEDED " + it.outputData.getString("key")
+//                    )
+//                }
+//                WorkInfo.State.FAILED -> {
+//                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.FAILED")
+//
+//                }
+//                WorkInfo.State.RUNNING -> {
+//                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.RUNNING")
+//
+//                }
+//
+//                WorkInfo.State.ENQUEUED -> {
+//                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.RUNNING")
+//
+//                }
+//
+//                WorkInfo.State.BLOCKED -> {
+//                    Log.d(TAG, "startSimpleWorker: WorkInfo.State.RUNNING")
+//
+//                }
+//
+//                else -> {}
+//            }
+//        })
 
 
     }
 
     @Composable
-    fun WorkerButton(txt:String,onClick:() ->Unit) {
+    fun WorkerButton(txt: String, onClick: () -> Unit) {
         Button(onClick = onClick) {
             Text(text = txt)
         }
