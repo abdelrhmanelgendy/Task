@@ -1,7 +1,6 @@
 package com.tasks.gym_dashboard.presentation
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -25,12 +24,15 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
-import com.tasks.gym_dashboard.data.model.GymItem
-import androidx.compose.foundation.lazy.items
+ import androidx.compose.foundation.lazy.items
+import com.tasks.gym_dashboard.domain.GymItem
+import com.tasks.gym_dashboard.presentation.dashboard.GymsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "MainActivityTAG"
 lateinit var gymViewModel1: GymsViewModel
 
+@AndroidEntryPoint
 class DashboardActivity() : ComponentActivity() {
 
 
@@ -84,12 +86,7 @@ class DashboardActivity() : ComponentActivity() {
                 items(gymViewModel1.gymsState.value .gyms) { item ->
                     Log.d(TAG, "ListOfGymItems: " + item.toString())
                     GymItem(item) {
-                        startActivity(
-                            Intent(
-                                this@DashboardActivity,
-                                GymDetailsActivity::class.java
-                            )
-                        )
+
                     }
                 }
 
@@ -145,7 +142,7 @@ class DashboardActivity() : ComponentActivity() {
                     modifier = Modifier.weight(weight = .1f)
 
                 ){
-                    gymViewModel1.toggleIsFavorite(gymItem)
+                    gymViewModel1.toggleIsFavorite(gymItem.id,gymItem.is_Favorite)
                 }
 
             }

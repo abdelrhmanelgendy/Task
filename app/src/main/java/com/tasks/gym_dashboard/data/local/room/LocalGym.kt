@@ -1,4 +1,4 @@
-package com.tasks.gym_dashboard.data.model
+package com.tasks.gym_dashboard.data.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "Gyms_table")
-data class GymItem(
+data class LocalGym(
 
     var gym_name: String,
     var gym_location: String,

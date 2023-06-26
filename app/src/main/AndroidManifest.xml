@@ -22,7 +22,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
     <application
-        android:name="com.tasks.gym_dashboard.data.GymsApplication"
+        android:name="com.tasks.gym_dashboard.GymsApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -30,26 +30,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NavigationComponent"
-        tools:targetApi="31">
-        <activity
-            android:name=".MVC_Activity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
+        android:theme="@style/Theme.NavigationComponent">
 
-             To get one, follow the directions here:
 
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/api_key" />
@@ -59,7 +42,7 @@
             android:exported="true"
             android:label="@string/title_activity_maps"></activity>
         <activity
-            android:name="com.tasks.gym_dashboard.presentation.DashboardActivity"
+            android:name="com.tasks.phillip_calculator_app.CalculatorScreen"
             android:exported="true"
             android:label="@string/title_activity_maps">
             <intent-filter>
@@ -80,9 +63,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name="com.tasks.gym_dashboard.presentation.GymDetailsActivity"
-            android:exported="false" />
+
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -110,6 +91,14 @@
         <receiver
             android:name="com.tasks.broadcast_reciever_deep_in.local.MyLocalReceiver"
             android:exported="false" />
+
+        <service
+            android:name="com.tasks.firebase_job_dispatcher.MyJobDispatchService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

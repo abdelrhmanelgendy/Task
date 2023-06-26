@@ -1,12 +1,12 @@
-package com.tasks.gym_dashboard.data.room
+package com.tasks.gym_dashboard.data.local.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.tasks.gym_dashboard.data.model.GymItem
+import com.tasks.gym_dashboard.data.local.LocalGym
 
-@Database(entities = arrayOf(GymItem::class), version = 1)
+@Database(entities = arrayOf(LocalGym::class), version = 1)
 abstract class GymDatabase() : RoomDatabase() {
     abstract val getDao: GymDao
 

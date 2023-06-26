@@ -3,11 +3,10 @@ package com.tasks.gym_dashboard.api.consumer
 import android.content.Context
 import android.net.ConnectivityManager
 import android.util.Log
-import com.tasks.gym_dashboard.api.GymApi
+import com.tasks.gym_dashboard.data.remote.GymApi
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
 import java.util.concurrent.TimeUnit
 
 

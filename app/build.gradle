@@ -4,6 +4,7 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
     id 'kotlin-kapt'
+    id "com.google.dagger.hilt.android"
 
 //    id 'org.jetbrains.kotlin.plugin.serialization'
 }
@@ -141,7 +142,13 @@ dependencies {
     implementation "androidx.room:room-ktx:2.5.1"
     kapt "androidx.room:room-compiler:2.5.1"
 
+//    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
 
     implementation 'io.agora.rtc:full-sdk:4.0.1'
+
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
 }
