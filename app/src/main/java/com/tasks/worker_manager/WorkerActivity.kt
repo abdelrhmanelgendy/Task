@@ -99,7 +99,7 @@ class WorkerActivity : ComponentActivity() {
 //        cursor.close()
 
 
-         val constraints = Constraints.Builder()
+        val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .setRequiresBatteryNotLow(true)
             .build()
