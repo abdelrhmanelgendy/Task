@@ -2,4 +2,8 @@
     <string name="app_name">navigationComponent</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_maps2">MapsActivity2</string>
+    <string name="api_key">AIzaSyD4uStbluZBnwKADWRtCPalZoddDXdNQbs</string>
+
+    <string name="show_more">Show more</string>
+    <string name="show_less">Show less</string>
 </resources>

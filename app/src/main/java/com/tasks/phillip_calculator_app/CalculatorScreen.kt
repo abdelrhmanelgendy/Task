@@ -5,13 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.tasks.navigationcomponent.ui.theme.NavigationComponentTheme
-import com.tasks.navigationcomponent.ui.theme.backGroundColor
 
 class CalculatorScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class CalculatorScreen : ComponentActivity() {
             NavigationComponentTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = backGroundColor,
+                    color = MaterialTheme.colors.primary,
                 ) {
                     CalculatorBody()
                 }

@@ -30,7 +30,6 @@ class GymsViewModel @Inject constructor(
         )
     )
 
-
     var gymsState: State<GymScreenState> = derivedStateOf { _gymsState }
 
 
