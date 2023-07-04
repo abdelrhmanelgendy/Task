@@ -2,12 +2,10 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
-
-    id 'kotlin-kapt'
+     id 'kotlin-kapt'
     id "com.google.dagger.hilt.android"
 
-//    id 'org.jetbrains.kotlin.plugin.serialization'
-}
+ }
 
 android {
 
@@ -41,9 +39,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            applicationIdSuffix '.hello'
-        }
+//        debug {
+//            applicationIdSuffix '.hello'
+//        }
 
     }
     compileOptions {
@@ -65,20 +63,20 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    flavorDimensions 'appTypes'
+//    flavorDimensions 'appTypes'
 
 
-    productFlavors {
-        free {
-            dimension 'appTypes'
-            applicationIdSuffix '.free'
-        }
-        Pro {
-            dimension 'appTypes'
-            applicationIdSuffix '.pro'
-        }
-
-    }
+//    productFlavors {
+//        free {
+//            dimension 'appTypes'
+//            applicationIdSuffix '.free'
+//        }
+//        Pro {
+//            dimension 'appTypes'
+//            applicationIdSuffix '.pro'
+//        }
+//
+//    }
 }
 
 dependencies {
@@ -154,4 +152,7 @@ dependencies {
 
     implementation 'com.airbnb.android:lottie:6.0.0'
 
-}
+
+
+
+ }
