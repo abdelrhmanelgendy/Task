@@ -35,26 +35,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationComponent">
-        <activity android:name="com.tasks.gym_dashboard.presentation.MainActivity" android:exported="true">
+        <activity
+            android:name="com.tasks.motion_layout_screen.MotionLayoutScreen"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
 
-        </activity>
-        <activity android:name="com.tasks.dev_compose_lab.presentation.DevLabMainScreen" android:exported="true">
-
-        </activity>
-        <activity android:name="com.tasks.dev_compose_lab.presentation.AnimationsDeepIn" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
         <activity
-            android:name="com.tasks.finger_print_manager.FingerPrintManagerActivity"
+            android:name="com.tasks.gym_dashboard.presentation.MainActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name="com.tasks.dev_compose_lab.presentation.DevLabMainScreen"
+            android:exported="true"></activity>
+        <activity
+            android:name="com.tasks.dev_compose_lab.presentation.AnimationsDeepIn"
             android:exported="true">
 
-
         </activity>
+        <activity
+            android:name="com.tasks.finger_print_manager.FingerPrintManagerActivity"
+            android:exported="true"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -64,7 +71,6 @@
             android:name="com.tasks.alarm_manager.AlarmManagerScreen"
             android:exported="true"
             android:label="@string/title_activity_maps" />
-
         <activity
             android:name="com.tasks.shared_pref_files_location.SharedPrefScreen"
             android:configChanges="orientation|screenSize"
@@ -104,7 +110,6 @@
             android:exported="false" />
 
         <service android:name="com.tasks.finger_print_manager.DownloadService" />
-
     </application>
 
 </manifest>
