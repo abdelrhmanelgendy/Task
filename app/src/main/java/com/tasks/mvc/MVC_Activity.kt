@@ -11,9 +11,9 @@ class MVC_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMvcBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.mvcBtnGetData.setOnClickListener {
-            val first = Movie.getMovies().first()
-        }
+//        binding.mvcBtnGetData.setOnClickListener {
+//            val first = Movie.getMovies().first()
+//        }
 
      }
 }

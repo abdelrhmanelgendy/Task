@@ -110,6 +110,13 @@
             android:exported="false" />
 
         <service android:name="com.tasks.finger_print_manager.DownloadService" />
+        <receiver
+            android:exported="true"
+            android:name="com.tasks.broadcast_reciever_deep_in.AfterRebootReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
