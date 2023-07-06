@@ -36,7 +36,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationComponent">
         <activity
-            android:name="com.tasks.motion_layout_screen.MotionLayoutScreen"
+            android:name="com.tasks.sql_lite_open_helper.SqlScreen"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
