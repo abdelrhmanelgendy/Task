@@ -14,6 +14,9 @@ class SharedPrefScreen : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
         val defaultSharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(this@SharedPrefScreen)
         setContent {
