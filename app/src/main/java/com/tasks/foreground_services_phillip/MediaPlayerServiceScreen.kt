@@ -7,34 +7,43 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.ui.graphics.Color
+import com.tasks.navigationcomponent.ui.theme.NavigationComponentTheme
 
 class MediaPlayerServiceScreen: ComponentActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            Column {
-                Button(onClick = {
+         setContent {
+            NavigationComponentTheme() {
 
-                    val service =Intent(this@MediaPlayerServiceScreen,MediaPlayerService::class.java)
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        startForegroundService(service)
-                    }else{
-                        startService(service)
-                    }
-                }) {
-                    Text(text = "START")
-                }
-                Button(onClick = {
-                    val service =Intent(this@MediaPlayerServiceScreen,MediaPlayerService::class.java)
+                Surface(color = Color.DarkGray) {
 
-                    stopService(service)
-                }) {
-                    Text(text = "STOP")
                 }
             }
+//            Column {
+//                Button(onClick = {
+//
+//                    val service =Intent(this@MediaPlayerServiceScreen,MediaPlayerService::class.java)
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        startForegroundService(service)
+//                    }else{
+//                        startService(service)
+//                    }
+//                }) {
+//                    Text(text = "START")
+//                }
+//                Button(onClick = {
+//                    val service =Intent(this@MediaPlayerServiceScreen,MediaPlayerService::class.java)
+//
+//                    stopService(service)
+//                }) {
+//                    Text(text = "STOP")
+//                }
+//            }
         }
     }
 }
