@@ -95,6 +95,7 @@ dependencies {
     implementation project(path: ':domain')
     testImplementation 'junit:junit:4.13.2'
 
+    androidTestImplementation 'com.google.truth:truth:1.1.3'
 
     def lifecycle_version = "2.4.0"
 // ViewModel
@@ -166,5 +167,11 @@ dependencies {
 
     implementation "androidx.compose.runtime:runtime-livedata:1.4.3"
 
+
+
+
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion;
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:' + rootProject.espressoVersion;
 
 }

@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -50,6 +51,7 @@ class PhotoCompressionScreen : ComponentActivity() {
 
 
         setContent {
+            Log.d("TAG123", "onCreate: ")
             val scrollState = rememberScrollState()
             NavigationComponentTheme() {
                 val workerResult = viewModel.workerId?.let { id ->
@@ -58,6 +60,7 @@ class PhotoCompressionScreen : ComponentActivity() {
 
 
                 LaunchedEffect(key1 = workerResult?.outputData) {
+                    Log.d("TAG123", "onCreate: LaunchedEffect")
                     if (workerResult?.outputData != null) {
                         val filePath = workerResult.outputData.getString(
                             KEY_RESULT_PATH
@@ -112,7 +115,7 @@ class PhotoCompressionScreen : ComponentActivity() {
         val request = OneTimeWorkRequestBuilder<PhotoCompressionWorker>().setInputData(
             workDataOf(
                 KEY_CONTENT_URI to uri.toString(),
-                KEY_COMPRESSION_MAX_SIZE to 1024 * 10L
+                KEY_COMPRESSION_MAX_SIZE to 1024 * 5L
             )
         ).setConstraints(
             Constraints(

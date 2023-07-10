@@ -45,7 +45,7 @@ class PhotoCompressionWorker(
 
                     Log.d(TAG, "doWork: Size"+outputBytes.size+" quality "+quality)
                 }
-            }while (outputBytes.size>maxSize&&quality>=5)
+            }while (outputBytes.size>maxSize&&quality>=4)
 
 
             val file =File(context.cacheDir,"${workerParameters.id}.jpeg")

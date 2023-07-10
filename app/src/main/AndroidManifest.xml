@@ -44,7 +44,7 @@
 
         </activity>
         <activity
-            android:name="com.tasks.phillip_worker_manager.PhotoCompressionScreen"
+            android:name="com.tasks.ui_test.pick_image.ImageViewerActivity"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
