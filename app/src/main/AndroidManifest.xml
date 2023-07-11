@@ -43,7 +43,7 @@
             android:launchMode="singleTask">
 
         </activity>
-        <activity android:name="com.tasks.dev_compose_lab.composables.JetpackComposeViewsRoot" android:exported="true">
+        <activity android:name="com.tasks.deep_into_flows.FlowActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
