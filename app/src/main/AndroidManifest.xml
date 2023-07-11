@@ -43,15 +43,18 @@
             android:launchMode="singleTask">
 
         </activity>
-        <activity
-            android:name="com.tasks.ui_test.pick_image.ImageViewerActivity"
-            android:exported="true"
-            android:launchMode="singleTask">
+        <activity android:name="com.tasks.dev_compose_lab.composables.JetpackComposeViewsRoot" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tasks.ui_test.pick_image.ImageViewerActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
