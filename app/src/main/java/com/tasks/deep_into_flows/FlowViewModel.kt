@@ -6,9 +6,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class FlowViewModel constructor(val dispatchers: CoroutineDispatcherProvider) : ViewModel() {
+class FlowViewModel constructor() : ViewModel() {
 
-
+    val dispatchers: CoroutineDispatcherProvider=DefaultCoroutineDispatchers()
     private var _counterStateFlow = MutableStateFlow(5)
     var counterStateFlow = _counterStateFlow.asStateFlow()
 

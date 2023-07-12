@@ -23,7 +23,6 @@ import androidx.work.Constraints
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
-import coil.compose.AsyncImage
 import com.tasks.navigationcomponent.ui.theme.NavigationComponentTheme
 import com.tasks.phillip_worker_manager.PhotoCompressionWorker.Companion.KEY_COMPRESSION_MAX_SIZE
 import com.tasks.phillip_worker_manager.PhotoCompressionWorker.Companion.KEY_CONTENT_URI
@@ -84,13 +83,11 @@ class PhotoCompressionScreen : ComponentActivity() {
 
 
                         Text(text = "UnCompressed Image")
-                        AsyncImage(model = it, contentDescription = null)
                     }
                     Spacer(modifier = Modifier.height(20.dp))
 
                     viewModel.compressedBitmap?.let {
                         Text(text = "Compressed Image")
-                        AsyncImage(model = it, contentDescription = null)
                     }
                 }
             }

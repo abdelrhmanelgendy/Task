@@ -48,10 +48,15 @@ class FlowViewModelTest {
 
 
 
+
+
+
+
     @Test
     fun `square number, gives a right answer`()= runBlocking {
 
-
+       //create a broad cast receiver
+        
 
         val job =launch {
             viewModel.counterSharedFlow.test {

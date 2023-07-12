@@ -2,7 +2,6 @@ package com.tasks.gym_dashboard.data
 
 import com.tasks.gym_dashboard.data.remote.GymApi
 import com.tasks.gym_dashboard.api.consumer.GymApiConsumer
-import com.tasks.gym_dashboard.GymsApplication
 import com.tasks.gym_dashboard.data.local.GymStateItem
 import com.tasks.gym_dashboard.data.local.LocalGym
 import com.tasks.gym_dashboard.data.local.room.GymDao
