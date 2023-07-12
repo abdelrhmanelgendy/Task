@@ -14,6 +14,8 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -40,17 +42,15 @@ class FlowActivity : ComponentActivity() {
 
             collectLatestLifeCycleFlow(flowViewModel.counterStateFlow) { num ->
                 Log.d("TAG124", "onCreate: $num")
-                if(num>10)
-                {
-                    Toast.makeText(this,"This is toast",Toast.LENGTH_SHORT).show()
+                if (num > 10) {
+                    Toast.makeText(this, "This is toast", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            collectSharedFlow(flowViewModel.counterSharedFlow){ num ->
+            collectSharedFlow(flowViewModel.counterSharedFlow) { num ->
                 Log.d("TAG124", "onCreate: $num")
-                if(num==10)
-                {
-                    Toast.makeText(this,"This is toast",Toast.LENGTH_SHORT).show()
+                if (num == 10) {
+                    Toast.makeText(this, "This is toast", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -101,12 +101,30 @@ class FlowActivity : ComponentActivity() {
         }
     }
 
-    fun<T> collectSharedFlow(flow: SharedFlow<T>,collect:suspend (T)->Unit){
+    fun <T> collectSharedFlow(flow: SharedFlow<T>, collect: suspend (T) -> Unit) {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 flow.collect(collect)
             }
         }
+    }
+
+
+    @Composable
+    fun compose() {
+
+
+        val x = 5
+
+        DisposableEffect(key1 = x) {
+
+
+            onDispose {
+
+            }
+        }
+
+//        buildButton()
     }
 }
 
