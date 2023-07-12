@@ -10,7 +10,6 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.*
 import com.tasks.navigationcomponent.ui.theme.NavigationComponentTheme
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class SideEffectScreen : ComponentActivity() {
 
