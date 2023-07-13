@@ -34,6 +34,7 @@ fun SelectedItems() {
         delay(5000)
         items=items.take(5)
     }
+    //
     
     LazyColumn(Modifier.fillMaxSize()) {
         items(items) { item ->
