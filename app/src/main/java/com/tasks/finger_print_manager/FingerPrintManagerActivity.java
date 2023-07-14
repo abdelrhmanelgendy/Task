@@ -3,7 +3,9 @@ package com.tasks.finger_print_manager;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
@@ -32,6 +34,9 @@ public class FingerPrintManagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityDownloadManagerScreenBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+
+        Log.d(TAG, "onCreate: ");
+        
         binding.btnClicking.setOnClickListener(v->{
             try {
                 downLoad();
@@ -40,6 +45,22 @@ public class FingerPrintManagerActivity extends AppCompatActivity {
                 Log.d(TAG, "onCreate: "+e.getMessage());
             }
         });
+    }
+
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Uri parcelableExtra;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            parcelableExtra = intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri.class);
+        }else
+        {
+            parcelableExtra = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+
+        }
+        Log.d(TAG, "onNewIntent: "+parcelableExtra);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

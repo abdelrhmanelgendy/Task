@@ -23,6 +23,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tasks.XmlToJsonOrObject
 import com.tasks.navigationcomponent.ui.theme.NavigationComponentTheme
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -39,8 +40,14 @@ class SqlScreen : ComponentActivity() {
             val personsData = remember { mutableStateListOf<PersonData>() }
             NavigationComponentTheme {
                 Surface(color = Color.DarkGray) {
-                    LoginScreen()
+//                    LoginScreen()
 
+                    Button(onClick = {
+                        XmlToJsonOrObject.main()
+
+                    }) {
+                        Text(text = "Click")
+                    }
                 }
 //                Column(
 //                    verticalArrangement = Arrangement.Top,

@@ -17,7 +17,9 @@ class GymsApplication : Application() {
     }
 
     override fun onCreate() {
+
         super.onCreate()
+
          registerReceiver(AfterRebootReceiver(), IntentFilter(Intent.ACTION_BOOT_COMPLETED))
 
     }
