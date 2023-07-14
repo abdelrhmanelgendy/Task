@@ -23,7 +23,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tasks.XmlToJsonOrObject
+//import com.tasks.XmlToJsonOrObject
 import com.tasks.navigationcomponent.ui.theme.NavigationComponentTheme
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -43,7 +43,7 @@ class SqlScreen : ComponentActivity() {
 //                    LoginScreen()
 
                     Button(onClick = {
-                        XmlToJsonOrObject.main()
+//                        XmlToJsonOrObject.main()
 
                     }) {
                         Text(text = "Click")

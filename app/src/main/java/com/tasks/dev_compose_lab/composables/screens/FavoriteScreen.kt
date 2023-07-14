@@ -9,18 +9,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
+//import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
  @Composable
 fun FavoriteScreen() {
 
 
-    val systemUiController = rememberSystemUiController()
-    systemUiController.setStatusBarColor(
-        color = Color.Green
-
-    )
+//    val systemUiController = rememberSystemUiController()
+//    systemUiController.setStatusBarColor(
+//        color = Color.Green
+//
+//    )
 
 
      Box(modifier = Modifier
