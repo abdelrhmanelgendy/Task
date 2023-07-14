@@ -6,13 +6,13 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.v4.content.LocalBroadcastManager
-import android.util.Log
+ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.gms.maps.model.LatLng
 import com.tasks.broadcast_reciever_deep_in.local.MyLocalReceiver
 import com.tasks.broadcast_reciever_deep_in.model_data.Person

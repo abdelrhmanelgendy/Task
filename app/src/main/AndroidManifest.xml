@@ -24,7 +24,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <application
         android:name="com.tasks.gym_dashboard.GymsApplication"
         android:allowBackup="true"
@@ -35,13 +37,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationComponent">
-        <activity
-            android:name="com.tasks.sql_lite_open_helper.SqlScreen"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
 
+        <activity
+            android:name="com.tasks.foreground_services_phillip.MediaPlayerServiceScreen"
+            android:exported="true"
+            android:launchMode="singleTask">
+
+        </activity>
+        <activity android:name="com.tasks.side_effects.SideEffectScreen" android:exported="true">
+
+        </activity>
+        <activity android:name="com.aphillip_study_jetpack_basics.PhillipEntryPoint" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,11 +55,32 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.tasks.ui_test.pick_image.ImageViewerActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.tasks.sql_lite_open_helper.SqlScreen"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
+
+        </activity>
+        <activity
             android:name="com.tasks.gym_dashboard.presentation.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name="com.tasks.dev_compose_lab.presentation.DevLabMainScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name="com.tasks.dev_compose_lab.presentation.AnimationsDeepIn"
             android:exported="true">
@@ -61,7 +88,7 @@
         </activity>
         <activity
             android:name="com.tasks.finger_print_manager.FingerPrintManagerActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -82,16 +109,7 @@
                 android:value="" />
         </activity>
 
-        <provider
-            android:name="androidx.startup.InitializationProvider"
-            android:authorities="${applicationId}.androidx-startup"
-            android:exported="false"
-            tools:node="merge">
-            <meta-data
-                android:name="androidx.work.WorkManagerInitializer"
-                android:value="androidx.startup"
-                tools:node="remove" />
-        </provider>
+
 
         <receiver
             android:name="com.tasks.alarm_manager.AlarmReceiver"
@@ -111,12 +129,15 @@
 
         <service android:name="com.tasks.finger_print_manager.DownloadService" />
         <receiver
-            android:exported="true"
-            android:name="com.tasks.broadcast_reciever_deep_in.AfterRebootReceiver">
-            <intent-filter >
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            android:name="com.tasks.broadcast_reciever_deep_in.AfterRebootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+
+        <service android:name="com.tasks.foreground_services_phillip.MediaPlayerService" />
     </application>
 
 </manifest>

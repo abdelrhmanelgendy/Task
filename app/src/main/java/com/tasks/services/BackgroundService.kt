@@ -25,23 +25,3 @@ class BackgroundService : IntentService("") {
 
 }
 
-class LoginActivity :MyActivity(){
-    override fun onCreate(id:Int): MyActivity {
-
-
-
-
-        return super.onCreate(885)
-
-    }
-}
-
-open class MyActivity {
-
-
-    @CallSuper
-    open  fun onCreate(id:Int): MyActivity {
-        return this
-    }
-
-}

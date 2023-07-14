@@ -6,4 +6,14 @@
 
     <string name="show_more">Show more</string>
     <string name="show_less">Show less</string>
+
+    <string name="update_text">Update history</string>
+    <string name="input_text_hint">Text to add</string>
+    <string name="new_text">Empty log</string>
+
+    <string name="button_open_camera">Take photo</string>
+    <string name="search">Search</string>
+    <string name="activity">Activity</string>
+    <string name="follow">Follow</string>
+    <string name="following">Following</string>
 </resources>
