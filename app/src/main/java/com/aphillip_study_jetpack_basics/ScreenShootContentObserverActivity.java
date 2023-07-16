@@ -2,6 +2,7 @@ package com.aphillip_study_jetpack_basics;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.tasks.navigationcomponent.R;
@@ -22,11 +24,15 @@ public class ScreenShootContentObserverActivity extends AppCompatActivity {
 
 ActivityScreenShootContentObserverBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityScreenShootContentObserverBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+
+
 
         HandlerThread handlerThread = new HandlerThread("content_observer");
         handlerThread.start();

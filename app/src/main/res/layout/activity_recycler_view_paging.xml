@@ -8,10 +8,9 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recAc_Rec"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recAc_Rec"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-tools:listitem="@layout/activity_recycler_view_paging_item"
-        />
+        tools:listitem="@layout/activity_recycler_view_paging_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

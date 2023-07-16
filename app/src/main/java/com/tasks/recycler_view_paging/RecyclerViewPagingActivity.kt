@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tasks.navigationcomponent.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class RecyclerViewPagingActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
@@ -27,13 +28,20 @@ class RecyclerViewPagingActivity : AppCompatActivity() {
         val pager = Pager(config = pagingConfig, pagingSourceFactory = { pagingSource })
         val myPagingData: Flow<PagingData<MyData>> = pager.flow.cachedIn(lifecycleScope)
 
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
             myPagingData.collectLatest {
                 myPagingDataAdapter.submitData(lifecycle,it)
             }
          }
+
+        lifecycleScope.launch {
+            HH()
+        }
     }
+    suspend fun HH(){}
 }
+
+
 
 class MyPagingDataAdapter :
     PagingDataAdapter<MyData, MyPagingDataAdapter.MyViewHolder>(DIFF_CALLBACK) {

@@ -48,7 +48,7 @@
             android:name="com.tasks.side_effects.SideEffectScreen"
             android:exported="true" />
         <activity
-            android:name="com.aphillip_study_jetpack_basics.PhillipEntryPoint"
+            android:name="com.aphillip_study_jetpack_basics.ScreenShootContentObserverActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
