@@ -32,7 +32,6 @@
     <application
         android:name="com.tasks.gym_dashboard.GymsApplication"
         android:allowBackup="true"
-        android:requestLegacyExternalStorage="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -44,12 +43,12 @@
         <activity
             android:name="com.tasks.foreground_services_phillip.MediaPlayerServiceScreen"
             android:exported="true"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
         <activity
             android:name="com.tasks.side_effects.SideEffectScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
-            android:name="com.aphillip_study_jetpack_basics.ScreenShootContentObserverActivity"
+            android:name="com.aphillip_study_jetpack_basics.PhillipEntryPoint"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -84,7 +83,7 @@
             android:exported="true" />
         <activity
             android:name="com.tasks.dev_compose_lab.presentation.AnimationsDeepIn"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name="com.tasks.finger_print_manager.FingerPrintManagerActivity"
             android:exported="true" />
@@ -133,13 +132,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver
-            android:name=".ScreenshotReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MEDIA_SCANNER_SCAN_FILE" />
-            </intent-filter>
-        </receiver>
+
 
         <service android:name="com.tasks.foreground_services_phillip.MediaPlayerService" />
     </application>

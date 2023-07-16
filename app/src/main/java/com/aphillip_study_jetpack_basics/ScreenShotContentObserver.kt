@@ -16,19 +16,11 @@ abstract class ScreenShotContentObserver constructor(handler: Handler?, val cont
     private var previousPath: String? = null
 
 
-    override fun deliverSelfNotifications(): Boolean {
-        return super.deliverSelfNotifications()
-    }
-
-    override fun onChange(selfChange: Boolean) {
-        super.onChange(selfChange)
-    }
-
     override fun onChange(selfChange: Boolean, uri: Uri?) {
         var cursor: Cursor? = null
         try {
             cursor = context.getContentResolver().query(
-                uri!!, arrayOf<String>(
+                uri!!, arrayOf(
                     MediaStore.Images.Media.DISPLAY_NAME,
                     MediaStore.Images.Media.DATA
                 ), null, null, null
