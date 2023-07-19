@@ -42,10 +42,7 @@ fun SplashAnimationScreen(navController: NavController) {
             .background(Color.Black),
         contentAlignment = Alignment.Center
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.fire),
-            contentDescription = "logo"
-        )
+
     }
 
 }

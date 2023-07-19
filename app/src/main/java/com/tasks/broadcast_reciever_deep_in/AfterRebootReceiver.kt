@@ -17,6 +17,8 @@ class AfterRebootReceiver:BroadcastReceiver() {
     lateinit var notificationManager:NotificationManager
     override fun onReceive(p0: Context?, intent: Intent?) {
 
+
+        Toast.makeText(p0,"AIR PLANE ",Toast.LENGTH_LONG).show()
         notificationManager=p0?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

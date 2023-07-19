@@ -6,8 +6,8 @@
 
     <uses-feature android:name="android.hardware.nfc" />
 
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -40,6 +40,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationComponent">
 
+        <receiver android:name="com.tasks.broadcast_reciever_deep_in.AfterRebootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.AIRPLANE_MODE"/>
+            </intent-filter>
+        </receiver>
         <activity
             android:name="com.tasks.foreground_services_phillip.MediaPlayerServiceScreen"
             android:exported="true"
@@ -48,7 +54,7 @@
             android:name="com.tasks.side_effects.SideEffectScreen"
             android:exported="true" />
         <activity
-            android:name="com.aphillip_study_jetpack_basics.ScreenShootContentObserverActivity"
+            android:name="com.tasks.uri.UriActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,18 +62,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.tasks.ui_test.pick_image.ImageViewerActivity"
-            android:exported="true"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="image/*" />
-            </intent-filter>
-        </activity>
         <activity
             android:name="com.tasks.sql_lite_open_helper.SqlScreen"
             android:exported="true">
@@ -125,13 +120,7 @@
 
         <service android:name="com.tasks.finger_print_manager.DownloadService" />
 
-        <receiver
-            android:name="com.tasks.broadcast_reciever_deep_in.AfterRebootReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
+
 
 
         <service android:name="com.tasks.foreground_services_phillip.MediaPlayerService" />

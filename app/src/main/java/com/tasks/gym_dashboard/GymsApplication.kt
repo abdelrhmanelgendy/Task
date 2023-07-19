@@ -20,7 +20,7 @@ class GymsApplication : Application() {
 
         super.onCreate()
 
-         registerReceiver(AfterRebootReceiver(), IntentFilter(Intent.ACTION_BOOT_COMPLETED))
+         registerReceiver(AfterRebootReceiver(), IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED))
 
     }
     companion object {
